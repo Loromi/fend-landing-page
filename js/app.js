@@ -23,7 +23,10 @@ const sectionThree = document.querySelector('#section3');
 
 const sectionActive = document.querySelector('.your-active-class');
 
-const navbar = document.querySelector('navbar__list');
+const navBar = document.querySelector('navbar__list');
+
+const navItem = document.createElement('li').createElement('a');
+
 
 /**
  * End Global Variables
