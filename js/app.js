@@ -23,12 +23,17 @@ const sectionThree = document.querySelector('#section3');
 
 const sectionActive = document.querySelector('.your-active-class');
 
-const navBar = document.querySelector('navbar__list');
+const navBar = document.querySelector('#navbar__list');
 
-const listItem = document.createElement('li');
+
+
 const anchor = document.createElement('a');
 
-const navList = [];
+const navList = [
+    sectionOne,
+    sectionTwo,
+    sectionThree,
+];
 
 
 /**
@@ -38,13 +43,22 @@ const navList = [];
 */
 
 
-
 /**
  * End Helper Functions
  * Begin Main Functions
  * 
 */
-
+for (i=0; i<navList.length; i++) {
+    let listElement = document.createElement('li');
+    let listItem = {
+        number: i+1,
+        name: `${navList[i].dataset.nav}`,
+    };
+    listElement.setAttribute(`id`, `section${listItem.number}`);
+    listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
+    navBar.appendChild(listElement);
+    listElement.innerHTML = `<a href="#section${listItem.number}">${navList[i].dataset.nav}</a>`;
+}    
 // build the nav
 
 
