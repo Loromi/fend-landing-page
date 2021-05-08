@@ -25,7 +25,10 @@ const sectionActive = document.querySelector('.your-active-class');
 
 const navBar = document.querySelector('navbar__list');
 
-const navItem = document.createElement('li').createElement('a');
+const listItem = document.createElement('li');
+const anchor = document.createElement('a');
+
+const navList = [];
 
 
 /**
