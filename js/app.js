@@ -17,7 +17,9 @@
  * Define Global Variables
  * 
 */
-
+const sectionOne = document.querySelector('#section1');
+const sectionTwo = document.querySelector('#section2');
+const sectionThree = document.querySelector('#section3');
 
 /**
  * End Global Variables
