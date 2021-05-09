@@ -21,7 +21,7 @@ const sectionOne = document.querySelector('#section1');
 const sectionTwo = document.querySelector('#section2');
 const sectionThree = document.querySelector('#section3');
 
-const sectionActive = document.querySelector('.your-active-class');
+const active = document.querySelector('.your-active-class');
 
 const navBar = document.querySelector('#navbar__list');
 
@@ -41,7 +41,7 @@ const navList = [
  * Start Helper Functions
  * 
 */
-
+if ()
 
 /**
  * End Helper Functions
