@@ -76,17 +76,18 @@ section {
 
 .navbar__menu li {
     display: inline-block;
-    font-family: 'Merriweather', serif; 
     padding: 1em;
     border: 1px solid rgba(0,13,60,0.21);
+    margin-right: 3px;
     border-radius: 2%;
     border-collapse: collapse;
 }
 
 .navbar__menu .menu__link {
     display: block;
-    font-weight: bold;
+    font-family: 'Merriweather', serif; 
     text-decoration: none;
+    font-weight: bolder;
     color: #000;
 }
 
