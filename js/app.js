@@ -57,7 +57,7 @@ for (i=0; i<navList.length; i++) {
     listElement.setAttribute(`id`, `section${listItem.number}`);
     listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
     navBar.appendChild(listElement);
-    listElement.innerHTML = `<a href="#section${listItem.number}">${navList[i].dataset.nav}</a>`;
+    listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
 }    
 // build the nav
 
