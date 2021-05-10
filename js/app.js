@@ -42,6 +42,7 @@ for (j=1; j<=document.getElementsByTagName('section').length; j++) {
     navList.push(navItem);
 };
 
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -53,7 +54,7 @@ for (i=0; i<navList.length; i++) {
         number: i+1,
         name: `${navList[i].dataset.nav}`,
     };
-    listElement.setAttribute(`id`, `section${listItem.number}`);
+    listElement.setAttribute(`id`, `section-${listItem.number}`);
     listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
     navBar.appendChild(listElement);
     listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
