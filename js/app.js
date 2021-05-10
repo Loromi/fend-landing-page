@@ -29,11 +29,7 @@ const navBar = document.querySelector('#navbar__list');
 
 const anchor = document.createElement('a');
 
-const navList = [
-    sectionOne,
-    sectionTwo,
-    sectionThree,
-];
+const navList = [];
 
 
 /**
@@ -41,7 +37,10 @@ const navList = [
  * Start Helper Functions
  * 
 */
-if ()
+for (j=1; j<=document.getElementsByTagName('section').length; j++) {
+    let navItem = document.getElementById(`section${j}`);
+    navList.push(navItem);
+};
 
 /**
  * End Helper Functions
