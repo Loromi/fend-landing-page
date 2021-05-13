@@ -29,6 +29,8 @@ const navBar = document.querySelector('#navbar__list');
 
 const anchor = document.createElement('a');
 
+const sections = document.getElementsByTagName('section');
+
 const navList = [];
 
 
@@ -37,9 +39,14 @@ const navList = [];
  * Start Helper Functions
  * 
 */
-for (j=1; j<=document.getElementsByTagName('section').length; j++) {
-    let navItem = document.getElementById(`section${j}`);
-    navList.push(navItem);
+
+
+function createNavList() {
+    for (j=1; j<=sections.length; j++) {
+        let section = document.getElementById(`section${j}`);
+        navList.push(section);
+    };
+
 };
 
 
@@ -48,21 +55,40 @@ for (j=1; j<=document.getElementsByTagName('section').length; j++) {
  * Begin Main Functions
  * 
 */
-for (i=0; i<navList.length; i++) {
-    let listElement = document.createElement('li');
-    let listItem = {
-        number: i+1,
-        name: `${navList[i].dataset.nav}`,
-    };
-    listElement.setAttribute(`id`, `section-${listItem.number}`);
-    listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
-    navBar.appendChild(listElement);
-    listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
-}    
+
 // build the nav
+function buildNavbar() {
+    for (i=0; i<navList.length; i++) {
+        let listElement = document.createElement('li');
+        let listItem = {
+            number: i+1,
+            name: `${navList[i].dataset.nav}`,
+        };
+        listElement.setAttribute(`id`, `section-${listItem.number}`);
+        listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
+        navBar.appendChild(listElement);
+        listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
+    };
+};
 
 
 // Add class 'active' to section when near top of viewport
+function setActiveClass() {
+    console.log(`#setActiveClass`);
+    for (x=0; x<sections.length; x++) {
+        let sectionActive = sections[x];
+        let rect = sectionActive.getBoundingClientRect();
+        if (
+            rect.top < 0 ||
+            rect.top >= sectionActive.offsetHeight 
+        ) {
+            sectionActive.classList.remove('your-active-class');
+        } else {
+            sectionActive.classList.add('your-active-class');
+        };
+    };
+};
+
 
 
 // Scroll to anchor ID using scrollTO event
@@ -75,9 +101,10 @@ for (i=0; i<navList.length; i++) {
 */
 
 // Build menu 
+createNavList()
+buildNavbar()
 
 // Scroll to section on link click
 
 // Set sections as active
-
-
+document.addEventListener('scroll', setActiveClass(), {passive: true});
