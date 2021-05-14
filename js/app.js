@@ -113,4 +113,4 @@ buildNavbar()
 // Scroll to section on link click
 
 // Set sections as active
-document.addEventListener('scroll', setActiveClass(), {passive: true});
+document.addEventListener('scroll', ()=> {setActiveClass()}, {passive: true});
