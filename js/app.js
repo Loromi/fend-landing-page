@@ -80,12 +80,6 @@ function setActiveClass() {
 
 
 // Scroll to anchor ID using scrollTO event
-function scrollToAnchorId() {
-    const navBarItems = Array.from(navBar.querySelectorAll('li'));
-    for (l=0; l<=navBarItems.length; l++) {
-        navBarItems[l].addEventListener('click', scrollTo(navBarItems[l].offsetLeft, navBarItems[l].offsetTop))
-    };
-}
 
 
 /**
