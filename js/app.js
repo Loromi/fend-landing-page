@@ -37,8 +37,7 @@ function createNavList() {
         let section = document.getElementById(`section${j}`);
         navList.push(section);
     };
-
-};
+}
 
 
 /**
@@ -65,7 +64,7 @@ function buildNavbar() {
         navBar.appendChild(listElement);
         listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
     };
-};
+}
 
 
 /** 
@@ -87,7 +86,7 @@ function setActiveClass() {
             sectionActive.classList.add('your-active-class');
         };
     };
-};
+}
 
 
 /**
