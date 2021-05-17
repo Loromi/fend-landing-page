@@ -28,7 +28,10 @@ const navList = [];
  * 
 */
 
-
+/**
+ * create an array from all sections
+ * @description loop through all sections and store them in an array
+*/ 
 function createNavList() {
     for (j=1; j<=sections.length; j++) {
         let section = document.getElementById(`section${j}`);
@@ -44,7 +47,12 @@ function createNavList() {
  * 
 */
 
-// build the nav
+/** 
+ * build the nav
+ * @description loop through the array of sections
+ * @description create an anchor-element nested into a list-element for each section
+ * @description store the list-elements in the unordered list inside the nav-element
+*/ 
 function buildNavbar() {
     for (i=0; i<navList.length; i++) {
         let listElement = document.createElement('li');
@@ -60,9 +68,13 @@ function buildNavbar() {
 };
 
 
-// Add class 'active' to section when near top of viewport
+/** 
+ * Add class 'active' to section when near top of viewport
+ * @description loop through sections
+ * @description remove highlighting when a section leaves the viewport
+ * @description add highlighting for the section next to the top of the viewport
+*/ 
 function setActiveClass() {
-    console.log(`#setActiveClass`);
     for (x=0; x<sections.length; x++) {
         let sectionActive = sections[x];
         let rect = sectionActive.getBoundingClientRect();
@@ -78,21 +90,23 @@ function setActiveClass() {
 };
 
 
-
-// Scroll to anchor ID using scrollTO event
-
-
 /**
  * End Main Functions
  * Begin Events
  * 
 */
 
-// Build menu 
-createNavList()
-buildNavbar()
+// Build menu
+createNavList();
+buildNavbar();
 
-// Scroll to section on link click
+/** 
+ * Scroll to section on link click
+ * @description scroll to section when an anchor link in the Menu is clicked
+ * @description set the corresponding nav-item as active to highlight it
+ * @description remove highlighting of currently active nav-items
+ * @param {element} anchor
+*/
 navBar.querySelectorAll('a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         navBar.querySelectorAll('a').forEach(anchor => {
@@ -104,8 +118,8 @@ navBar.querySelectorAll('a').forEach(anchor => {
         });
         document.querySelector(this.classList.add('active__link'));
     });
-
 });
+
 
 // Set sections as active
 document.addEventListener('scroll', ()=> {setActiveClass()}, {passive: true});
