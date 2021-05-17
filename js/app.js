@@ -17,20 +17,8 @@
  * Define Global Variables
  * 
 */
-const sectionOne = document.querySelector('#section1');
-const sectionTwo = document.querySelector('#section2');
-const sectionThree = document.querySelector('#section3');
-
-const active = document.querySelector('.your-active-class');
-
 const navBar = document.querySelector('#navbar__list');
-
-
-
-const anchor = document.createElement('a');
-
 const sections = document.getElementsByTagName('section');
-
 const navList = [];
 
 
@@ -59,8 +47,6 @@ function createNavList() {
 // build the nav
 function buildNavbar() {
     for (i=0; i<navList.length; i++) {
-        let section = document.getElementById(`section${i}`);
-        navList.push(section);
         let listElement = document.createElement('li');
         let listItem = {
             number: i+1,
@@ -70,7 +56,6 @@ function buildNavbar() {
         listElement.setAttribute(`data-nav`, `Section ${listItem.number}`);
         navBar.appendChild(listElement);
         listElement.innerHTML = `<a href="#section${listItem.number}" class="menu__link">${navList[i].dataset.nav}</a>`;
-        scrollToAnchorId(listItem, section)
     };
 };
 
@@ -95,19 +80,12 @@ function setActiveClass() {
 
 
 // Scroll to anchor ID using scrollTO event
-// function scrollToAnchorId() {
-//     const navBarItems = Array.from(navBar.querySelectorAll('li'));
-//     for (l=0; l<=navBarItems.length; l++) {
-//         navBarItems[l].addEventListener('click', scrollTo(navBarItems[l].offsetLeft, navBarItems[l].offsetTop))
-//     };
-// }
-
-function scrollToAnchorId(clickTarget, scrollTarget){
-    clickTarget.addEventListener('click', (e)=>{
-      e.preventDefault();
-      scrollTarget.scrollIntoView({behavior: 'smooth'})
-    })
-  }
+function scrollToAnchorId() {
+    const navBarItems = Array.from(navBar.querySelectorAll('li'));
+    for (l=0; l<=navBarItems.length; l++) {
+        navBarItems[l].addEventListener('click', scrollTo(navBarItems[l].offsetLeft, navBarItems[l].offsetTop))
+    };
+}
 
 
 /**
@@ -117,11 +95,23 @@ function scrollToAnchorId(clickTarget, scrollTarget){
 */
 
 // Build menu 
-// createNavList()
+createNavList()
 buildNavbar()
 
 // Scroll to section on link click
+navBar.querySelectorAll('a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        navBar.querySelectorAll('a').forEach(anchor => {
+            anchor.classList.remove('active__link');
+        });
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+        document.querySelector(this.classList.add('active__link'));
+    });
 
+});
 
 // Set sections as active
 document.addEventListener('scroll', ()=> {setActiveClass()}, {passive: true});
